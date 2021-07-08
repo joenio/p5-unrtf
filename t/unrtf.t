@@ -7,7 +7,7 @@ BEGIN {
 };
 
 sub require_file_on_new : Tests {
-  throws_ok { UnRTF->new } qr/Attribute.*file.*required/, 'file is required';
+  throws_ok { UnRTF->new } qr/Missing required.*: file/, 'file is required';
 }
 
 sub test_object : Tests {

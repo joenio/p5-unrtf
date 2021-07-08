@@ -1,6 +1,7 @@
 package UnRTF;
 use Modern::Perl;
-use Moose;
+use Moo;
+use Types::Standard qw(Str);
 
 =head1 NAME
 
@@ -25,7 +26,7 @@ Copyright (C) 2013 Joenio Costa
 
 =cut
 
-has file => (is => 'rw', isa => 'Str', required => 1);
+has file => (is => 'rw', isa => Str, required => 1);
 
 sub unrtf {
   open STDERR, '>', '/dev/null';

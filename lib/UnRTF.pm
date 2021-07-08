@@ -2,7 +2,7 @@ package UnRTF;
 use Modern::Perl;
 use Moo;
 use Types::Standard qw(Str);
-use IPC::Cmd qw(run);
+use IPC::Cmd qw(run can_run);
 
 =head1 NAME
 
@@ -28,6 +28,10 @@ Copyright (C) 2013 Joenio Costa
 =cut
 
 has file => (is => 'rw', isa => Str, required => 1);
+
+sub BUILD {
+  die "Could not find unrtf command" unless can_run('unrtf');
+}
 
 sub unrtf {
   my( $success, $error_message, $full_buf, $stdout_buf, $stderr_buf ) =

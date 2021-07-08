@@ -39,6 +39,7 @@ sub unrtf {
 
 sub convert {
   my ($self, %args) = @_;
+  return '' unless $args{format};
   unrtf("--$args{format}", $self->file);
 }
 

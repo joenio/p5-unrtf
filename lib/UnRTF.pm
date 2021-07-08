@@ -2,6 +2,7 @@ package UnRTF;
 use Modern::Perl;
 use Moo;
 use Types::Standard qw(Str);
+use IPC::Cmd qw(run);
 
 =head1 NAME
 
@@ -29,12 +30,10 @@ Copyright (C) 2013 Joenio Costa
 has file => (is => 'rw', isa => Str, required => 1);
 
 sub unrtf {
-  open STDERR, '>', '/dev/null';
-  open(UNRTF, "unrtf @_ |") or die $!;
-  local $/ = undef;
-  my $OUTPUT = <UNRTF>;
-  close UNRTF;
-  $OUTPUT;
+  my( $success, $error_message, $full_buf, $stdout_buf, $stderr_buf ) =
+    run( command => [ 'unrtf', @_ ], verbose => 0 );
+  die "unrtf failure: @{[ join '', @$stderr_buf  ]}" if ! $success;
+  return join '', @$stdout_buf;
 }
 
 sub convert {

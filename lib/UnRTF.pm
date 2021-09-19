@@ -3,6 +3,9 @@ use Modern::Perl;
 use Moo;
 use Types::Standard qw(Str);
 use IPC::Cmd qw(run can_run);
+use Alien::UnRTF;
+use Env qw( @PATH );
+unshift @PATH, Alien::UnRTF->bin_dir;  # unrtf is now in $PATH
 
 =head1 NAME
 

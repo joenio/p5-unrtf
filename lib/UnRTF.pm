@@ -26,7 +26,7 @@ See: L<http://www.gnu.org/software/unrtf>.
 
 =head1 COPYRIGHT
 
-Copyright (C) 2013 Joenio Costa
+Copyright (C) 2013-2021 Joenio Marques da Costa
 
 =cut
 
